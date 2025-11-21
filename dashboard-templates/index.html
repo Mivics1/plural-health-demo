@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Reports Hub</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 40px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { text-align: center; color: white; margin-bottom: 60px; }
+        header h1 { font-size: 48px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header p { font-size: 18px; opacity: 0.9; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .card { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: all 0.3s ease; display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+        .card-icon { font-size: 48px; margin-bottom: 15px; }
+        .card-title { font-size: 24px; font-weight: 600; margin-bottom: 10px; color: #333; }
+        .card-description { font-size: 14px; color: #666; margin-bottom: 20px; flex-grow: 1; }
+        .card-features { font-size: 13px; color: #888; list-style: none; }
+        .card-features li { padding: 5px 0; padding-left: 20px; position: relative; }
+        .card-features li:before { content: "✓"; position: absolute; left: 0; color: #667eea; font-weight: bold; }
+        .card-button { display: inline-block; margin-top: 20px; padding: 12px 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; transition: all 0.3s ease; text-align: center; text-decoration: none; }
+        .card-button:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); }
+        .stats-section { background: white; border-radius: 15px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .stats-section h2 { color: #333; margin-bottom: 20px; font-size: 24px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; }
+        .stat-value { font-size: 32px; font-weight: bold; margin-bottom: 5px; }
+        .stat-label { font-size: 14px; opacity: 0.9; }
+        .guide-section { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .guide-section h2 { color: #333; margin-bottom: 20px; font-size: 24px; }
+        .scenario { margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-left: 4px solid #667eea; border-radius: 5px; }
+        .scenario-title { font-weight: 600; color: #333; margin-bottom: 8px; }
+        .scenario-description { color: #666; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧪 Test Reports Hub</h1>
+            <p>All your testing reports in one place</p>
+        </header>
+        <div class="cards-grid">
+            <a href="dashboard.html" class="card">
+                <div class="card-icon">📊</div>
+                <div class="card-title">Simple Dashboard</div>
+                <div class="card-description">Beautiful, easy-to-read dashboard designed for non-technical team members and stakeholders.</div>
+                <ul class="card-features">
+                    <li>Large readable statistics</li>
+                    <li>Color-coded results</li>
+                    <li>Quick overview</li>
+                </ul>
+                <button class="card-button">View Dashboard →</button>
+            </a>
+            <a href="dashboard-advanced.html" class="card">
+                <div class="card-icon">⏱️</div>
+                <div class="card-title">Advanced Dashboard</div>
+                <div class="card-description">Powerful dashboard with time travel feature to view historical test runs and export reports to Excel.</div>
+                <ul class="card-features">
+                    <li>Time travel through history</li>
+                    <li>Excel export functionality</li>
+                    <li>Historical comparisons</li>
+                </ul>
+                <button class="card-button">Advanced Features →</button>
+            </a>
+            <a href="mochawesome.html" class="card">
+                <div class="card-icon">📈</div>
+                <div class="card-title">Technical Report</div>
+                <div class="card-description">Detailed technical test report with comprehensive test execution data and metrics.</div>
+                <ul class="card-features">
+                    <li>Full test details</li>
+                    <li>Code snippets</li>
+                    <li>Performance data</li>
+                </ul>
+                <button class="card-button">View Report →</button>
+            </a>
+        </div>
+        <div class="stats-section">
+            <h2>📈 Latest Test Run Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-value" id="totalTests">-</div><div class="stat-label">Total Tests</div></div>
+                <div class="stat-card"><div class="stat-value" id="passedTests">-</div><div class="stat-label">Passed Tests</div></div>
+                <div class="stat-card"><div class="stat-value" id="failedTests">-</div><div class="stat-label">Failed Tests</div></div>
+                <div class="stat-card"><div class="stat-value" id="successRate">-</div><div class="stat-label">Success Rate</div></div>
+            </div>
+        </div>
+        <div class="guide-section">
+            <h2>📝 Test Scenarios Guide</h2>
+            <div class="scenario"><div class="scenario-title">✓ Scenario 1: Standard User - Successful Login</div><div class="scenario-description">Tests the happy path where a standard user successfully logs in with valid credentials.</div></div>
+            <div class="scenario"><div class="scenario-title">✓ Scenario 2: Locked Out User - Login Failure</div><div class="scenario-description">Tests the scenario where a user account is locked. Verifies graceful failure.</div></div>
+            <div class="scenario"><div class="scenario-title">✓ Scenario 3: Problem User - UI Inconsistencies</div><div class="scenario-description">Tests edge cases and validates application resilience.</div></div>
+        </div>
+    </div>
+    <script>
+        async function loadStatistics() {
+            try {
+                const response = await fetch('./json/mochawesome.json');
+                const data = await response.json();
+                const stats = data.stats;
+                document.getElementById('totalTests').textContent = stats.tests;
+                document.getElementById('passedTests').textContent = stats.passes;
+                document.getElementById('failedTests').textContent = stats.failures;
+                document.getElementById('successRate').textContent = stats.passPercent + '%';
+            } catch (error) {
+                console.error('Error loading statistics:', error);
+            }
+        }
+        window.addEventListener('load', loadStatistics);
+    </script>
+</body>
+</html>

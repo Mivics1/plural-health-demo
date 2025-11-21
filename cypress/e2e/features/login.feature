@@ -9,17 +9,17 @@ Feature: Sauce Demo Login Functionality
 
   @smoke @standard
   Scenario: 1. Standard User - Successful Login
-    When I log in with valid credentials "standard_user" and "secret_sauce"
+    When I log in as "standardUser"
     Then I should be redirected to the product inventory page
     And I should see the product title "Products"
 
   @locked
   Scenario: 2. Locked Out User - Login Failure
-    When I log in with valid credentials "locked_out_user" and "secret_sauce"
+    When I log in as "lockedOutUser"
     Then I should see the error message "Epic sadface: Sorry, this user has been locked out."
 
   @problem
   Scenario: 3. Problem User - UI Inconsistencies
-    When I log in with valid credentials "problem_user" and "secret_sauce"
+    When I log in as "problemUser"
     Then I should be redirected to the product inventory page
     And all product images should show the same image
