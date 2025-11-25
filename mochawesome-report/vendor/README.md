@@ -5,6 +5,6 @@ Recommended file name: xlsx.min.js
 How to obtain:
 1. Download from CDN (version used by this project):
    https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.min.js
-2. Save it as `mochawesome-report/vendor/xlsx.min.js`.
+2. Save it as `dashboard-templates/vendor/xlsx.min.js`.
 
-The `xlsx-loader.js` included with the dashboards will attempt to load the local file first, then fall back to the CDN if it's not present. Placing the file in this folder will ensure .xlsx export works offline and doesn't depend on external CDNs.
+When you run the restore script, the template will be copied into `mochawesome-report/` and the loader will try to load `./vendor/xlsx.min.js` from the generated report folder. Alternatively place the same file at `mochawesome-report/vendor/xlsx.min.js` after report generation.

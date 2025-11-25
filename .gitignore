@@ -12,3 +12,10 @@ cypress/videos/
 
 # Logs
 npm-debug.log*
+
+# Mochawesome report folder
+mochawesome-report/
+# Dashboard templates
+dashboard-templates/    
+# mochawesome report file
+mochawesome.json
